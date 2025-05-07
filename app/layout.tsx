@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import { Theme } from "@radix-ui/themes";
+import { Theme, ThemePanel } from "@radix-ui/themes";
 
 
 const geistSans = Geist({
@@ -32,6 +32,7 @@ export default function RootLayout({
       >
         <Theme>
           {children}
+          <ThemePanel/>
         </Theme>
       </body>
     </html>
