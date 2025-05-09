@@ -1,7 +1,7 @@
 'use client';
 
-import { ExitIcon } from '@radix-ui/react-icons';
-import { Box, Button, Card, Flex, Heading, Strong, TabNav, Text } from '@radix-ui/themes';
+import { ExitIcon, SunIcon } from '@radix-ui/react-icons';
+import { Box, Button, Card, Flex, Heading, IconButton, Strong, TabNav, Text, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -17,15 +17,15 @@ const NavBar = () => {
   ];
 
   return (
-    <Box width="100vw" height="60px">
-      <Card>
-        <Flex justify="between" px="8" align="center">
+    <Card>
+      <Box width="100%" height="5vh">
+        <Flex justify="between" align="center">
           <Flex align="center" gapX="5">
-            <Image width={40} height={40} src="/PeduliHutan.png" alt="Logo PeduliHutan"></Image>
+            <Image width={40} height={40} src="/PeduliHutan.png" alt="Logo PeduliHutan" />
 
             <TabNav.Root justify="center">
               {tabs.map(({ href, label }) => {
-                const isActive = pathname === href;
+                const isActive = pathname.startsWith(href);
                 return (
                   <TabNav.Link
                     key={href}
@@ -41,13 +41,21 @@ const NavBar = () => {
             </TabNav.Root>
           </Flex>
 
-          <Button size="2">
-            <ExitIcon></ExitIcon>
-            Keluar
-          </Button>
+          <Flex gapX="3">
+            <Tooltip content="Ubah tema">
+              <IconButton variant="outline">
+                <SunIcon />
+              </IconButton>
+            </Tooltip>
+
+            <Button size="2">
+              <ExitIcon />
+              Keluar
+            </Button>
+          </Flex>
         </Flex>
-      </Card>
-    </Box>
+      </Box>
+    </Card>
   );
 };
 

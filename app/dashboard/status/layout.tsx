@@ -1,5 +1,5 @@
 import { Flex, ScrollArea } from "@radix-ui/themes";
-import NavBar from "./NavBar";
+import SideBar from "./SideBar";
 
 export default function DashboardLayout({
   children,
@@ -7,9 +7,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Flex height="100vh" direction="column" gapY="1">
-      <NavBar />
-      <ScrollArea type="always" scrollbars="vertical" style={{ height: "95vh" }}>
+    <Flex height="100%" gapY="1">
+      <SideBar/>
+      <ScrollArea type="always" scrollbars="vertical" style={{ height: "100%" }}>
         {children}
       </ScrollArea>
     </Flex>
