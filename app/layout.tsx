@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PeduliHijau",
-  description: "Web Aplikasi PeduliHijau",
+  title: "PeduliHutan",
+  description: "Web Aplikasi PeduliHutan",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Theme>
+        <Theme accentColor="teal" radius="large">
           {children}
           <ThemePanel/>
         </Theme>

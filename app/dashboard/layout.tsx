@@ -1,3 +1,4 @@
+import { Flex, ScrollArea } from "@radix-ui/themes";
 import NavBar from "./NavBar";
 
 export default function DashboardLayout({
@@ -6,9 +7,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <Flex height="100vh" width="100vw" direction="column">
       <NavBar />
-      {children}
-    </>
+      <ScrollArea>
+        {children}
+      </ScrollArea>
+    </Flex>
   );
 }
