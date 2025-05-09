@@ -1,7 +1,7 @@
 'use client';
 
 import { ExitIcon, SunIcon } from '@radix-ui/react-icons';
-import { Box, Button, Card, Flex, Heading, IconButton, Strong, TabNav, Text, Tooltip } from '@radix-ui/themes';
+import { Box, Button, Card, Flex, IconButton, Strong, TabNav, Text, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

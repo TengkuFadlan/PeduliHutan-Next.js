@@ -30,7 +30,7 @@ const LoginPage = () => {
               <Flex justify="between">
                 <Strong>Password</Strong>
               </Flex>
-              <TextField.Root variant="soft" placeholder='Masukkan password anda' >
+              <TextField.Root variant="soft" placeholder='Masukkan password anda' type="password">
                 <TextField.Slot>
                   <LockClosedIcon />
                 </TextField.Slot>
