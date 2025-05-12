@@ -12,8 +12,7 @@ const NavBar = () => {
 
   const tabs = [
     { href: '/dashboard/status', label: 'Status' },
-    { href: '/dashboard/activity', label: 'Aktifitas' },
-    { href: '/dashboard/settings', label: 'Pengaturan' },
+    { href: '/dashboard/history', label: 'Riwayat' },
   ];
 
   return (

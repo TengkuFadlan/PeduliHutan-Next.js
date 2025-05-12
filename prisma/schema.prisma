@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model esp_status {
+  id           Int      @id @default(1)
+  water_level  Int
+  battery      Int
+  last_picture String   @db.VarChar(255)
+  last_taken   DateTime @db.DateTime()
+  fire         Boolean  @default(false)
+}
+
+model history {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  fire      Boolean  @default(false)
+}
