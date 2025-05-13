@@ -22,3 +22,10 @@ model history {
   timestamp DateTime @default(now())
   fire      Boolean  @default(false)
 }
+
+model user {
+  id        Int       @id @default(autoincrement())
+  username  String
+  email     String    @unique
+  password  String
+}

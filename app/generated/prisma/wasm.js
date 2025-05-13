@@ -135,6 +135,13 @@ exports.Prisma.HistoryScalarFieldEnum = {
   fire: 'fire'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  email: 'email',
+  password: 'password'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -144,10 +151,17 @@ exports.Prisma.esp_statusOrderByRelevanceFieldEnum = {
   last_picture: 'last_picture'
 };
 
+exports.Prisma.userOrderByRelevanceFieldEnum = {
+  username: 'username',
+  email: 'email',
+  password: 'password'
+};
+
 
 exports.Prisma.ModelName = {
   esp_status: 'esp_status',
-  history: 'history'
+  history: 'history',
+  user: 'user'
 };
 
 /**

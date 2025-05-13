@@ -15,6 +15,23 @@ const NavBar = () => {
     { href: '/dashboard/history', label: 'Riwayat' },
   ];
 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        alert('Logout successful!');
+      } else {
+        alert('Logout failed.');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+      alert('An error occurred during logout.');
+    }
+  };
+
   return (
     <Card>
       <Box width="100%" height="5vh">
@@ -47,7 +64,7 @@ const NavBar = () => {
               </IconButton>
             </Tooltip>
 
-            <Button size="2">
+            <Button size="2" onClick={handleLogout}>
               <ExitIcon />
               Keluar
             </Button>

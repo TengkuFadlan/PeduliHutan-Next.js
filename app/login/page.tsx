@@ -1,10 +1,56 @@
 'use client';
 
-import { EnterIcon, PersonIcon, LockClosedIcon, Pencil2Icon } from '@radix-ui/react-icons';
-import { Box, Button, Card, Flex, Heading, Strong, TextField } from '@radix-ui/themes'
+import { EnterIcon, PersonIcon, LockClosedIcon, Pencil2Icon, ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import { Box, Button, Callout, Card, Flex, Heading, Strong, TextField } from '@radix-ui/themes'
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
 const LoginPage = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleRegister = async () => {
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.error);
+
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      setErrorMessage('Error terjadi saat melakukan pendaftaran');
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.error);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      setErrorMessage('Error terjadi saat masuk.');
+    }
+  };
+
   return (
     <Flex direction="column" align="center" justify="center" height="100vh">
       <Box width="360px">
@@ -18,9 +64,20 @@ const LoginPage = () => {
               <Image width={200} height={200} src="/LogoPeduliHutan.png" alt="Logo PeduliHutan"></Image>
             </Flex>
 
+            {errorMessage !== '' && (
+              <Callout.Root color="red">
+                <Callout.Icon>
+                  <ExclamationTriangleIcon />
+                </Callout.Icon>
+                <Callout.Text>
+                  {errorMessage}
+                </Callout.Text>
+              </Callout.Root>
+            )}
+
             <div>
               <Strong>Email</Strong>
-              <TextField.Root variant="soft" placeholder='Masukkan email anda'>
+              <TextField.Root variant="soft" placeholder='Masukkan email anda' value={email} onChange={(e) => setEmail(e.target.value)}>
                 <TextField.Slot>
                   <PersonIcon></PersonIcon>
                 </TextField.Slot>
@@ -30,7 +87,7 @@ const LoginPage = () => {
               <Flex justify="between">
                 <Strong>Password</Strong>
               </Flex>
-              <TextField.Root variant="soft" placeholder='Masukkan password anda' type="password">
+              <TextField.Root variant="soft" placeholder='Masukkan password anda' type="password" value={password} onChange={(e) => setPassword(e.target.value)}>
                 <TextField.Slot>
                   <LockClosedIcon />
                 </TextField.Slot>
@@ -38,8 +95,8 @@ const LoginPage = () => {
             </div>
 
             <Flex gap="2" direction="row-reverse">
-              <Button><EnterIcon />Masuk</Button>
-              <Button variant="outline"><Pencil2Icon />Daftar</Button>
+              <Button onClick={handleLogin}><EnterIcon />Masuk</Button>
+              <Button onClick={handleRegister} variant="outline"><Pencil2Icon />Daftar</Button>
             </Flex>
           </Flex>
         </Card>
