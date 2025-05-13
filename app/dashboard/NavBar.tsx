@@ -1,7 +1,7 @@
 'use client';
 
 import { ExitIcon, SunIcon } from '@radix-ui/react-icons';
-import { Box, Button, Card, Flex, IconButton, Strong, TabNav, Text, Tooltip } from '@radix-ui/themes';
+import { AlertDialog, Box, Button, Card, Flex, IconButton, Strong, TabNav, Text, Tooltip } from '@radix-ui/themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -22,13 +22,13 @@ const NavBar = () => {
       });
 
       if (response.ok) {
-        alert('Logout successful!');
+        window.location.href = "/login";
       } else {
-        alert('Logout failed.');
+        alert('Keluar gagal');
       }
     } catch (error) {
       console.error('Error during logout:', error);
-      alert('An error occurred during logout.');
+      alert('Error terjadi saat keluar');
     }
   };
 
@@ -64,10 +64,33 @@ const NavBar = () => {
               </IconButton>
             </Tooltip>
 
-            <Button size="2" onClick={handleLogout}>
-              <ExitIcon />
-              Keluar
-            </Button>
+            <AlertDialog.Root>
+              <AlertDialog.Trigger>
+                <Button size="2">
+                  <ExitIcon />
+                  Keluar
+                </Button>
+              </AlertDialog.Trigger>
+              <AlertDialog.Content maxWidth="450px">
+                <AlertDialog.Title>Keluar</AlertDialog.Title>
+                <AlertDialog.Description size="2">
+                  Are you sure?
+                </AlertDialog.Description>
+
+                <Flex gap="3" mt="4" justify="end">
+                  <AlertDialog.Cancel>
+                    <Button variant="soft" color="gray">
+                      Batal
+                    </Button>
+                  </AlertDialog.Cancel>
+                  <AlertDialog.Action>
+                    <Button variant="solid" color="red" onClick={handleLogout}>
+                      Pretty Sure
+                    </Button>
+                  </AlertDialog.Action>
+                </Flex>
+              </AlertDialog.Content>
+            </AlertDialog.Root>
           </Flex>
         </Flex>
       </Box>

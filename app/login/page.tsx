@@ -1,16 +1,22 @@
 'use client';
 
+import { useRouter } from 'next/navigation'; // Import useRouter
 import { EnterIcon, PersonIcon, LockClosedIcon, Pencil2Icon, ExclamationTriangleIcon } from '@radix-ui/react-icons';
-import { Box, Button, Callout, Card, Flex, Heading, Strong, TextField } from '@radix-ui/themes'
+import { Box, Button, Callout, Card, Flex, Heading, Strong, TextField, Spinner } from '@radix-ui/themes'
 import Image from 'next/image';
 import React, { useState } from 'react'
+
 const LoginPage = () => {
+  const router = useRouter(); // Initialize useRouter
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
 
   const handleRegister = async () => {
+    setIsRegistering(true); // Set loading state for register
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
@@ -19,19 +25,21 @@ const LoginPage = () => {
       });
 
       if (response.ok) {
-
+        router.push('/dashboard'); // Redirect to dashboard on success
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.error);
-
       }
     } catch (error) {
       console.error('Error during registration:', error);
       setErrorMessage('Error terjadi saat melakukan pendaftaran');
+    } finally {
+      setIsRegistering(false); // Reset loading state
     }
   };
 
   const handleLogin = async () => {
+    setIsLoggingIn(true); // Set loading state for login
     try {
       const response = await fetch('/api/login', {
         method: 'POST',
@@ -40,7 +48,7 @@ const LoginPage = () => {
       });
 
       if (response.ok) {
-
+        router.push('/dashboard'); // Redirect to dashboard on success
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.error);
@@ -48,6 +56,8 @@ const LoginPage = () => {
     } catch (error) {
       console.error('Error during login:', error);
       setErrorMessage('Error terjadi saat masuk.');
+    } finally {
+      setIsLoggingIn(false); // Reset loading state
     }
   };
 
@@ -95,8 +105,12 @@ const LoginPage = () => {
             </div>
 
             <Flex gap="2" direction="row-reverse">
-              <Button onClick={handleLogin}><EnterIcon />Masuk</Button>
-              <Button onClick={handleRegister} variant="outline"><Pencil2Icon />Daftar</Button>
+              <Button onClick={handleLogin} disabled={isLoggingIn}>
+                {isLoggingIn ? <Spinner /> : <EnterIcon />} Masuk
+              </Button>
+              <Button onClick={handleRegister} variant="outline" disabled={isRegistering}>
+                {isRegistering ? <Spinner /> : <Pencil2Icon />} Daftar
+              </Button>
             </Flex>
           </Flex>
         </Card>
@@ -105,4 +119,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default LoginPage;
