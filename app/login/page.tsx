@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation'; // Import useRouter
-import { EnterIcon, PersonIcon, LockClosedIcon, Pencil2Icon, ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import { EnterIcon, PersonIcon, LockClosedIcon, Pencil2Icon, ExclamationTriangleIcon, CheckIcon } from '@radix-ui/react-icons';
 import { Box, Button, Callout, Card, Flex, Heading, Strong, TextField, Spinner } from '@radix-ui/themes'
 import Image from 'next/image';
 import React, { useState } from 'react'
@@ -12,11 +12,14 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(''); // State for success message
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
 
   const handleRegister = async () => {
     setIsRegistering(true); // Set loading state for register
+    setErrorMessage(''); // Clear error message
+    setSuccessMessage(''); // Clear success message
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
@@ -25,7 +28,7 @@ const LoginPage = () => {
       });
 
       if (response.ok) {
-        router.push('/dashboard'); // Redirect to dashboard on success
+        setSuccessMessage('Register berhasil, silahkan masuk'); // Set success message
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.error);
@@ -40,6 +43,8 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     setIsLoggingIn(true); // Set loading state for login
+    setErrorMessage(''); // Clear error message
+    setSuccessMessage(''); // Clear success message
     try {
       const response = await fetch('/api/login', {
         method: 'POST',
@@ -48,6 +53,7 @@ const LoginPage = () => {
       });
 
       if (response.ok) {
+        setSuccessMessage('Masuk berhasil, mengalihkan ke dashboard'); // Set success message
         router.push('/dashboard'); // Redirect to dashboard on success
       } else {
         const errorData = await response.json();
@@ -81,6 +87,17 @@ const LoginPage = () => {
                 </Callout.Icon>
                 <Callout.Text>
                   {errorMessage}
+                </Callout.Text>
+              </Callout.Root>
+            )}
+
+            {successMessage !== '' && (
+              <Callout.Root color="green">
+                <Callout.Icon>
+                  <CheckIcon />
+                </Callout.Icon>
+                <Callout.Text>
+                  {successMessage}
                 </Callout.Text>
               </Callout.Root>
             )}
