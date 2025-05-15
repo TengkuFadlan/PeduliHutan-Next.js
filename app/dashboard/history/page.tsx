@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Badge, Box, Flex, Heading, Table } from '@radix-ui/themes';
 import { prisma } from "@/lib/prisma"; // Import the Prisma singleton client
 import React from 'react';

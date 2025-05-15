@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { CheckCircledIcon, ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { Box, Callout, Flex, Heading, Text } from '@radix-ui/themes';
 import { prisma } from "@/lib/prisma"; // Use the singleton Prisma client
