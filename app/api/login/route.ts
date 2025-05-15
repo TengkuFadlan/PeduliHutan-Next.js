@@ -37,7 +37,5 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Terjadi kesalahan' }, { status: 500 });
-  } finally {
-    await prisma.$disconnect();
   }
 }
