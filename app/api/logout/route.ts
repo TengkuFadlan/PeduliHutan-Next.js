@@ -6,7 +6,7 @@ export async function POST() {
   // Clear the userId cookie
   response.cookies.set('userId', '', {
     httpOnly: false, // Allow client-side access
-    secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+    secure: false,
     path: '/',
     maxAge: 0, // Expire the cookie immediately
   });

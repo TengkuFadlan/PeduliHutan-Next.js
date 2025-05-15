@@ -27,8 +27,8 @@ export async function POST(request: Request) {
     // Set the userId in a cookie
     const response = NextResponse.json({ message: 'Masuk berhasil', userId: user.id });
     response.cookies.set('userId', String(user.id), {
-      httpOnly: false, // Allow client-side access
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+      httpOnly: false,
+      secure: false,
       path: '/',
       maxAge: 24 * 60 * 60,
     });
