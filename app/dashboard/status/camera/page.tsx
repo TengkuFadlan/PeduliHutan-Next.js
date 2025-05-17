@@ -14,7 +14,7 @@ const CameraPage = async () => {
     return (
       <Box p="5">
         <Flex align="center" justify="center">
-          <Text>No data available</Text>
+          <Heading>Tidak ada data yang tersedia</Heading>
         </Flex>
       </Box>
     );

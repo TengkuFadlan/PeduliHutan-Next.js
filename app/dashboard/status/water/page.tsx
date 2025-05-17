@@ -14,7 +14,7 @@ const WaterPage = async () => {
     return (
       <Box p="5">
         <Flex align="center" justify="center">
-          <Heading>No data available</Heading>
+          <Heading>Tidak ada data yang tersedia</Heading>
         </Flex>
       </Box>
     );
