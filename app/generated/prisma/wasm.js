@@ -123,8 +123,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.Esp_statusScalarFieldEnum = {
   id: 'id',
   water_level: 'water_level',
-  battery: 'battery',
-  last_picture: 'last_picture',
   last_taken: 'last_taken',
   fire: 'fire'
 };
@@ -145,10 +143,6 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
-};
-
-exports.Prisma.esp_statusOrderByRelevanceFieldEnum = {
-  last_picture: 'last_picture'
 };
 
 exports.Prisma.userOrderByRelevanceFieldEnum = {

@@ -22,16 +22,6 @@ const SideBar = () => {
             </IconButton>
           </Tooltip>
 
-          <Tooltip content="Baterai">
-            <IconButton
-              variant="surface"
-              size="3"
-              onClick={() => router.push('/dashboard/status/battery')}
-            >
-              <LightningBoltIcon />
-            </IconButton>
-          </Tooltip>
-
           <Tooltip content="Air">
             <IconButton
               variant="surface"

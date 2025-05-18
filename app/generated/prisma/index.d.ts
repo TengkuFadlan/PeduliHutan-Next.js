@@ -1042,20 +1042,16 @@ export namespace Prisma {
   export type Esp_statusAvgAggregateOutputType = {
     id: number | null
     water_level: number | null
-    battery: number | null
   }
 
   export type Esp_statusSumAggregateOutputType = {
     id: number | null
     water_level: number | null
-    battery: number | null
   }
 
   export type Esp_statusMinAggregateOutputType = {
     id: number | null
     water_level: number | null
-    battery: number | null
-    last_picture: string | null
     last_taken: Date | null
     fire: boolean | null
   }
@@ -1063,8 +1059,6 @@ export namespace Prisma {
   export type Esp_statusMaxAggregateOutputType = {
     id: number | null
     water_level: number | null
-    battery: number | null
-    last_picture: string | null
     last_taken: Date | null
     fire: boolean | null
   }
@@ -1072,8 +1066,6 @@ export namespace Prisma {
   export type Esp_statusCountAggregateOutputType = {
     id: number
     water_level: number
-    battery: number
-    last_picture: number
     last_taken: number
     fire: number
     _all: number
@@ -1083,20 +1075,16 @@ export namespace Prisma {
   export type Esp_statusAvgAggregateInputType = {
     id?: true
     water_level?: true
-    battery?: true
   }
 
   export type Esp_statusSumAggregateInputType = {
     id?: true
     water_level?: true
-    battery?: true
   }
 
   export type Esp_statusMinAggregateInputType = {
     id?: true
     water_level?: true
-    battery?: true
-    last_picture?: true
     last_taken?: true
     fire?: true
   }
@@ -1104,8 +1092,6 @@ export namespace Prisma {
   export type Esp_statusMaxAggregateInputType = {
     id?: true
     water_level?: true
-    battery?: true
-    last_picture?: true
     last_taken?: true
     fire?: true
   }
@@ -1113,8 +1099,6 @@ export namespace Prisma {
   export type Esp_statusCountAggregateInputType = {
     id?: true
     water_level?: true
-    battery?: true
-    last_picture?: true
     last_taken?: true
     fire?: true
     _all?: true
@@ -1209,8 +1193,6 @@ export namespace Prisma {
   export type Esp_statusGroupByOutputType = {
     id: number
     water_level: number
-    battery: number
-    last_picture: string
     last_taken: Date
     fire: boolean
     _count: Esp_statusCountAggregateOutputType | null
@@ -1237,8 +1219,6 @@ export namespace Prisma {
   export type esp_statusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     water_level?: boolean
-    battery?: boolean
-    last_picture?: boolean
     last_taken?: boolean
     fire?: boolean
   }, ExtArgs["result"]["esp_status"]>
@@ -1248,13 +1228,11 @@ export namespace Prisma {
   export type esp_statusSelectScalar = {
     id?: boolean
     water_level?: boolean
-    battery?: boolean
-    last_picture?: boolean
     last_taken?: boolean
     fire?: boolean
   }
 
-  export type esp_statusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "water_level" | "battery" | "last_picture" | "last_taken" | "fire", ExtArgs["result"]["esp_status"]>
+  export type esp_statusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "water_level" | "last_taken" | "fire", ExtArgs["result"]["esp_status"]>
 
   export type $esp_statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "esp_status"
@@ -1262,8 +1240,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       water_level: number
-      battery: number
-      last_picture: string
       last_taken: Date
       fire: boolean
     }, ExtArgs["result"]["esp_status"]>
@@ -1637,8 +1613,6 @@ export namespace Prisma {
   interface esp_statusFieldRefs {
     readonly id: FieldRef<"esp_status", 'Int'>
     readonly water_level: FieldRef<"esp_status", 'Int'>
-    readonly battery: FieldRef<"esp_status", 'Int'>
-    readonly last_picture: FieldRef<"esp_status", 'String'>
     readonly last_taken: FieldRef<"esp_status", 'DateTime'>
     readonly fire: FieldRef<"esp_status", 'Boolean'>
   }
@@ -3778,8 +3752,6 @@ export namespace Prisma {
   export const Esp_statusScalarFieldEnum: {
     id: 'id',
     water_level: 'water_level',
-    battery: 'battery',
-    last_picture: 'last_picture',
     last_taken: 'last_taken',
     fire: 'fire'
   };
@@ -3814,13 +3786,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const esp_statusOrderByRelevanceFieldEnum: {
-    last_picture: 'last_picture'
-  };
-
-  export type esp_statusOrderByRelevanceFieldEnum = (typeof esp_statusOrderByRelevanceFieldEnum)[keyof typeof esp_statusOrderByRelevanceFieldEnum]
-
-
   export const userOrderByRelevanceFieldEnum: {
     username: 'username',
     email: 'email',
@@ -3843,13 +3808,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'String'
-   */
-  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -3860,6 +3818,13 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
     
 
 
@@ -3879,8 +3844,6 @@ export namespace Prisma {
     NOT?: esp_statusWhereInput | esp_statusWhereInput[]
     id?: IntFilter<"esp_status"> | number
     water_level?: IntFilter<"esp_status"> | number
-    battery?: IntFilter<"esp_status"> | number
-    last_picture?: StringFilter<"esp_status"> | string
     last_taken?: DateTimeFilter<"esp_status"> | Date | string
     fire?: BoolFilter<"esp_status"> | boolean
   }
@@ -3888,11 +3851,8 @@ export namespace Prisma {
   export type esp_statusOrderByWithRelationInput = {
     id?: SortOrder
     water_level?: SortOrder
-    battery?: SortOrder
-    last_picture?: SortOrder
     last_taken?: SortOrder
     fire?: SortOrder
-    _relevance?: esp_statusOrderByRelevanceInput
   }
 
   export type esp_statusWhereUniqueInput = Prisma.AtLeast<{
@@ -3901,8 +3861,6 @@ export namespace Prisma {
     OR?: esp_statusWhereInput[]
     NOT?: esp_statusWhereInput | esp_statusWhereInput[]
     water_level?: IntFilter<"esp_status"> | number
-    battery?: IntFilter<"esp_status"> | number
-    last_picture?: StringFilter<"esp_status"> | string
     last_taken?: DateTimeFilter<"esp_status"> | Date | string
     fire?: BoolFilter<"esp_status"> | boolean
   }, "id">
@@ -3910,8 +3868,6 @@ export namespace Prisma {
   export type esp_statusOrderByWithAggregationInput = {
     id?: SortOrder
     water_level?: SortOrder
-    battery?: SortOrder
-    last_picture?: SortOrder
     last_taken?: SortOrder
     fire?: SortOrder
     _count?: esp_statusCountOrderByAggregateInput
@@ -3927,8 +3883,6 @@ export namespace Prisma {
     NOT?: esp_statusScalarWhereWithAggregatesInput | esp_statusScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"esp_status"> | number
     water_level?: IntWithAggregatesFilter<"esp_status"> | number
-    battery?: IntWithAggregatesFilter<"esp_status"> | number
-    last_picture?: StringWithAggregatesFilter<"esp_status"> | string
     last_taken?: DateTimeWithAggregatesFilter<"esp_status"> | Date | string
     fire?: BoolWithAggregatesFilter<"esp_status"> | boolean
   }
@@ -4030,8 +3984,6 @@ export namespace Prisma {
   export type esp_statusCreateInput = {
     id?: number
     water_level: number
-    battery: number
-    last_picture: string
     last_taken: Date | string
     fire?: boolean
   }
@@ -4039,8 +3991,6 @@ export namespace Prisma {
   export type esp_statusUncheckedCreateInput = {
     id?: number
     water_level: number
-    battery: number
-    last_picture: string
     last_taken: Date | string
     fire?: boolean
   }
@@ -4048,8 +3998,6 @@ export namespace Prisma {
   export type esp_statusUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     water_level?: IntFieldUpdateOperationsInput | number
-    battery?: IntFieldUpdateOperationsInput | number
-    last_picture?: StringFieldUpdateOperationsInput | string
     last_taken?: DateTimeFieldUpdateOperationsInput | Date | string
     fire?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -4057,8 +4005,6 @@ export namespace Prisma {
   export type esp_statusUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     water_level?: IntFieldUpdateOperationsInput | number
-    battery?: IntFieldUpdateOperationsInput | number
-    last_picture?: StringFieldUpdateOperationsInput | string
     last_taken?: DateTimeFieldUpdateOperationsInput | Date | string
     fire?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -4066,8 +4012,6 @@ export namespace Prisma {
   export type esp_statusCreateManyInput = {
     id?: number
     water_level: number
-    battery: number
-    last_picture: string
     last_taken: Date | string
     fire?: boolean
   }
@@ -4075,8 +4019,6 @@ export namespace Prisma {
   export type esp_statusUpdateManyMutationInput = {
     id?: IntFieldUpdateOperationsInput | number
     water_level?: IntFieldUpdateOperationsInput | number
-    battery?: IntFieldUpdateOperationsInput | number
-    last_picture?: StringFieldUpdateOperationsInput | string
     last_taken?: DateTimeFieldUpdateOperationsInput | Date | string
     fire?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -4084,8 +4026,6 @@ export namespace Prisma {
   export type esp_statusUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     water_level?: IntFieldUpdateOperationsInput | number
-    battery?: IntFieldUpdateOperationsInput | number
-    last_picture?: StringFieldUpdateOperationsInput | string
     last_taken?: DateTimeFieldUpdateOperationsInput | Date | string
     fire?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -4186,21 +4126,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -4217,17 +4142,9 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type esp_statusOrderByRelevanceInput = {
-    fields: esp_statusOrderByRelevanceFieldEnum | esp_statusOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
   export type esp_statusCountOrderByAggregateInput = {
     id?: SortOrder
     water_level?: SortOrder
-    battery?: SortOrder
-    last_picture?: SortOrder
     last_taken?: SortOrder
     fire?: SortOrder
   }
@@ -4235,14 +4152,11 @@ export namespace Prisma {
   export type esp_statusAvgOrderByAggregateInput = {
     id?: SortOrder
     water_level?: SortOrder
-    battery?: SortOrder
   }
 
   export type esp_statusMaxOrderByAggregateInput = {
     id?: SortOrder
     water_level?: SortOrder
-    battery?: SortOrder
-    last_picture?: SortOrder
     last_taken?: SortOrder
     fire?: SortOrder
   }
@@ -4250,8 +4164,6 @@ export namespace Prisma {
   export type esp_statusMinOrderByAggregateInput = {
     id?: SortOrder
     water_level?: SortOrder
-    battery?: SortOrder
-    last_picture?: SortOrder
     last_taken?: SortOrder
     fire?: SortOrder
   }
@@ -4259,7 +4171,6 @@ export namespace Prisma {
   export type esp_statusSumOrderByAggregateInput = {
     id?: SortOrder
     water_level?: SortOrder
-    battery?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4276,24 +4187,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -4344,6 +4237,21 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
   export type userOrderByRelevanceInput = {
     fields: userOrderByRelevanceFieldEnum | userOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -4379,38 +4287,7 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedStringFilter<$PrismaModel = never> = {
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
     notIn?: string[]
@@ -4422,7 +4299,41 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringFilter<$PrismaModel> | string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -4468,24 +4379,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -4506,6 +4399,39 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
 

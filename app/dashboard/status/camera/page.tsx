@@ -26,10 +26,8 @@ const CameraPage = async () => {
         <Box width="60vw" height="60vh">
           <Flex direction="column" gapY="2">
             <Heading>
-              Gambar Terakhir
+              Status Camera
             </Heading>
-
-            <img width="60%" src={status.last_picture} alt="Last captured" />
 
             {status.fire ? (
               <Callout.Root color="red">

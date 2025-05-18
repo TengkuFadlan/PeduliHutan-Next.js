@@ -3,18 +3,12 @@ import { prisma } from "@/lib/prisma";
 
 export async function POST(request: Request) {
   try {
-    const { water_level, battery, last_picture, last_taken, fire } = await request.json();
+    const { water_level, fire } = await request.json();
 
     // Validate required fields
     if (
       water_level === undefined ||
-      battery === undefined ||
-      !last_picture ||
-      !last_taken ||
-      fire === undefined ||
-      last_picture.trim() === "" ||
-      last_taken.trim() === "" ||
-      isNaN(Date.parse(last_taken))
+      fire === undefined
     ) {
       return NextResponse.json({ error: 'Semua field diperlukan dan harus valid' }, { status: 400 });
     }
@@ -28,7 +22,7 @@ export async function POST(request: Request) {
         await prisma.history.create({
           data: {
             fire,
-            timestamp: new Date(last_taken),
+            timestamp: new Date(),
           },
         });
       }
@@ -36,9 +30,7 @@ export async function POST(request: Request) {
         where: { id: 1 },
         data: {
           water_level,
-          battery,
-          last_picture,
-          last_taken: new Date(last_taken),
+          last_taken: new Date(),
           fire,
         },
       });
@@ -48,9 +40,7 @@ export async function POST(request: Request) {
         data: {
           id: 1,
           water_level,
-          battery,
-          last_picture,
-          last_taken: new Date(last_taken),
+          last_taken: new Date(),
           fire,
         },
       });

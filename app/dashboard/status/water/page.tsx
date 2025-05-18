@@ -41,7 +41,7 @@ const WaterPage = async () => {
 
             <Table.Body>
               <Table.Row>
-                <Table.RowHeaderCell>ESP32CAM</Table.RowHeaderCell>
+                <Table.RowHeaderCell>Sumber Air</Table.RowHeaderCell>
                 <Table.Cell>{waterPercentage}%</Table.Cell>
                 <Table.Cell>
                   <Progress color="cyan" value={waterPercentage} size="3" />
