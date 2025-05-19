@@ -58,12 +58,6 @@ const NavBar = () => {
           </Flex>
 
           <Flex gapX="3">
-            <Tooltip content="Ubah tema">
-              <IconButton variant="outline">
-                <SunIcon />
-              </IconButton>
-            </Tooltip>
-
             <AlertDialog.Root>
               <AlertDialog.Trigger>
                 <Button size="2">

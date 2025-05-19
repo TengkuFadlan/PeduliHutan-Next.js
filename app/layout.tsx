@@ -32,7 +32,6 @@ export default function RootLayout({
       >
         <Theme accentColor="teal" radius="large">
           {children}
-          <ThemePanel/>
         </Theme>
       </body>
     </html>
