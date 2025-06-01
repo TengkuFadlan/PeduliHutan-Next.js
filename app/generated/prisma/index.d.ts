@@ -24,6 +24,11 @@ export type esp_status = $Result.DefaultSelection<Prisma.$esp_statusPayload>
  */
 export type history = $Result.DefaultSelection<Prisma.$historyPayload>
 /**
+ * Model water_history
+ * 
+ */
+export type water_history = $Result.DefaultSelection<Prisma.$water_historyPayload>
+/**
  * Model user
  * 
  */
@@ -173,6 +178,16 @@ export class PrismaClient<
     * ```
     */
   get history(): Prisma.historyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.water_history`: Exposes CRUD operations for the **water_history** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Water_histories
+    * const water_histories = await prisma.water_history.findMany()
+    * ```
+    */
+  get water_history(): Prisma.water_historyDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **user** model.
@@ -625,6 +640,7 @@ export namespace Prisma {
   export const ModelName: {
     esp_status: 'esp_status',
     history: 'history',
+    water_history: 'water_history',
     user: 'user'
   };
 
@@ -644,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "esp_status" | "history" | "user"
+      modelProps: "esp_status" | "history" | "water_history" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -777,6 +793,72 @@ export namespace Prisma {
           count: {
             args: Prisma.historyCountArgs<ExtArgs>
             result: $Utils.Optional<HistoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      water_history: {
+        payload: Prisma.$water_historyPayload<ExtArgs>
+        fields: Prisma.water_historyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.water_historyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.water_historyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload>
+          }
+          findFirst: {
+            args: Prisma.water_historyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.water_historyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload>
+          }
+          findMany: {
+            args: Prisma.water_historyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload>[]
+          }
+          create: {
+            args: Prisma.water_historyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload>
+          }
+          createMany: {
+            args: Prisma.water_historyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.water_historyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload>
+          }
+          update: {
+            args: Prisma.water_historyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload>
+          }
+          deleteMany: {
+            args: Prisma.water_historyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.water_historyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.water_historyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$water_historyPayload>
+          }
+          aggregate: {
+            args: Prisma.Water_historyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWater_history>
+          }
+          groupBy: {
+            args: Prisma.water_historyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Water_historyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.water_historyCountArgs<ExtArgs>
+            result: $Utils.Optional<Water_historyCountAggregateOutputType> | number
           }
         }
       }
@@ -932,6 +1014,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     esp_status?: esp_statusOmit
     history?: historyOmit
+    water_history?: water_historyOmit
     user?: userOmit
   }
 
@@ -2831,6 +2914,904 @@ export namespace Prisma {
 
 
   /**
+   * Model water_history
+   */
+
+  export type AggregateWater_history = {
+    _count: Water_historyCountAggregateOutputType | null
+    _avg: Water_historyAvgAggregateOutputType | null
+    _sum: Water_historySumAggregateOutputType | null
+    _min: Water_historyMinAggregateOutputType | null
+    _max: Water_historyMaxAggregateOutputType | null
+  }
+
+  export type Water_historyAvgAggregateOutputType = {
+    id: number | null
+    water_level: number | null
+  }
+
+  export type Water_historySumAggregateOutputType = {
+    id: number | null
+    water_level: number | null
+  }
+
+  export type Water_historyMinAggregateOutputType = {
+    id: number | null
+    timestamp: Date | null
+    water_level: number | null
+  }
+
+  export type Water_historyMaxAggregateOutputType = {
+    id: number | null
+    timestamp: Date | null
+    water_level: number | null
+  }
+
+  export type Water_historyCountAggregateOutputType = {
+    id: number
+    timestamp: number
+    water_level: number
+    _all: number
+  }
+
+
+  export type Water_historyAvgAggregateInputType = {
+    id?: true
+    water_level?: true
+  }
+
+  export type Water_historySumAggregateInputType = {
+    id?: true
+    water_level?: true
+  }
+
+  export type Water_historyMinAggregateInputType = {
+    id?: true
+    timestamp?: true
+    water_level?: true
+  }
+
+  export type Water_historyMaxAggregateInputType = {
+    id?: true
+    timestamp?: true
+    water_level?: true
+  }
+
+  export type Water_historyCountAggregateInputType = {
+    id?: true
+    timestamp?: true
+    water_level?: true
+    _all?: true
+  }
+
+  export type Water_historyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which water_history to aggregate.
+     */
+    where?: water_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of water_histories to fetch.
+     */
+    orderBy?: water_historyOrderByWithRelationInput | water_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: water_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` water_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` water_histories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned water_histories
+    **/
+    _count?: true | Water_historyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Water_historyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Water_historySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Water_historyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Water_historyMaxAggregateInputType
+  }
+
+  export type GetWater_historyAggregateType<T extends Water_historyAggregateArgs> = {
+        [P in keyof T & keyof AggregateWater_history]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWater_history[P]>
+      : GetScalarType<T[P], AggregateWater_history[P]>
+  }
+
+
+
+
+  export type water_historyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: water_historyWhereInput
+    orderBy?: water_historyOrderByWithAggregationInput | water_historyOrderByWithAggregationInput[]
+    by: Water_historyScalarFieldEnum[] | Water_historyScalarFieldEnum
+    having?: water_historyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Water_historyCountAggregateInputType | true
+    _avg?: Water_historyAvgAggregateInputType
+    _sum?: Water_historySumAggregateInputType
+    _min?: Water_historyMinAggregateInputType
+    _max?: Water_historyMaxAggregateInputType
+  }
+
+  export type Water_historyGroupByOutputType = {
+    id: number
+    timestamp: Date
+    water_level: number
+    _count: Water_historyCountAggregateOutputType | null
+    _avg: Water_historyAvgAggregateOutputType | null
+    _sum: Water_historySumAggregateOutputType | null
+    _min: Water_historyMinAggregateOutputType | null
+    _max: Water_historyMaxAggregateOutputType | null
+  }
+
+  type GetWater_historyGroupByPayload<T extends water_historyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Water_historyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Water_historyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Water_historyGroupByOutputType[P]>
+            : GetScalarType<T[P], Water_historyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type water_historySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timestamp?: boolean
+    water_level?: boolean
+  }, ExtArgs["result"]["water_history"]>
+
+
+
+  export type water_historySelectScalar = {
+    id?: boolean
+    timestamp?: boolean
+    water_level?: boolean
+  }
+
+  export type water_historyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "water_level", ExtArgs["result"]["water_history"]>
+
+  export type $water_historyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "water_history"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      timestamp: Date
+      water_level: number
+    }, ExtArgs["result"]["water_history"]>
+    composites: {}
+  }
+
+  type water_historyGetPayload<S extends boolean | null | undefined | water_historyDefaultArgs> = $Result.GetResult<Prisma.$water_historyPayload, S>
+
+  type water_historyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<water_historyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Water_historyCountAggregateInputType | true
+    }
+
+  export interface water_historyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['water_history'], meta: { name: 'water_history' } }
+    /**
+     * Find zero or one Water_history that matches the filter.
+     * @param {water_historyFindUniqueArgs} args - Arguments to find a Water_history
+     * @example
+     * // Get one Water_history
+     * const water_history = await prisma.water_history.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends water_historyFindUniqueArgs>(args: SelectSubset<T, water_historyFindUniqueArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Water_history that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {water_historyFindUniqueOrThrowArgs} args - Arguments to find a Water_history
+     * @example
+     * // Get one Water_history
+     * const water_history = await prisma.water_history.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends water_historyFindUniqueOrThrowArgs>(args: SelectSubset<T, water_historyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Water_history that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {water_historyFindFirstArgs} args - Arguments to find a Water_history
+     * @example
+     * // Get one Water_history
+     * const water_history = await prisma.water_history.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends water_historyFindFirstArgs>(args?: SelectSubset<T, water_historyFindFirstArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Water_history that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {water_historyFindFirstOrThrowArgs} args - Arguments to find a Water_history
+     * @example
+     * // Get one Water_history
+     * const water_history = await prisma.water_history.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends water_historyFindFirstOrThrowArgs>(args?: SelectSubset<T, water_historyFindFirstOrThrowArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Water_histories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {water_historyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Water_histories
+     * const water_histories = await prisma.water_history.findMany()
+     * 
+     * // Get first 10 Water_histories
+     * const water_histories = await prisma.water_history.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const water_historyWithIdOnly = await prisma.water_history.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends water_historyFindManyArgs>(args?: SelectSubset<T, water_historyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Water_history.
+     * @param {water_historyCreateArgs} args - Arguments to create a Water_history.
+     * @example
+     * // Create one Water_history
+     * const Water_history = await prisma.water_history.create({
+     *   data: {
+     *     // ... data to create a Water_history
+     *   }
+     * })
+     * 
+     */
+    create<T extends water_historyCreateArgs>(args: SelectSubset<T, water_historyCreateArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Water_histories.
+     * @param {water_historyCreateManyArgs} args - Arguments to create many Water_histories.
+     * @example
+     * // Create many Water_histories
+     * const water_history = await prisma.water_history.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends water_historyCreateManyArgs>(args?: SelectSubset<T, water_historyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Water_history.
+     * @param {water_historyDeleteArgs} args - Arguments to delete one Water_history.
+     * @example
+     * // Delete one Water_history
+     * const Water_history = await prisma.water_history.delete({
+     *   where: {
+     *     // ... filter to delete one Water_history
+     *   }
+     * })
+     * 
+     */
+    delete<T extends water_historyDeleteArgs>(args: SelectSubset<T, water_historyDeleteArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Water_history.
+     * @param {water_historyUpdateArgs} args - Arguments to update one Water_history.
+     * @example
+     * // Update one Water_history
+     * const water_history = await prisma.water_history.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends water_historyUpdateArgs>(args: SelectSubset<T, water_historyUpdateArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Water_histories.
+     * @param {water_historyDeleteManyArgs} args - Arguments to filter Water_histories to delete.
+     * @example
+     * // Delete a few Water_histories
+     * const { count } = await prisma.water_history.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends water_historyDeleteManyArgs>(args?: SelectSubset<T, water_historyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Water_histories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {water_historyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Water_histories
+     * const water_history = await prisma.water_history.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends water_historyUpdateManyArgs>(args: SelectSubset<T, water_historyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Water_history.
+     * @param {water_historyUpsertArgs} args - Arguments to update or create a Water_history.
+     * @example
+     * // Update or create a Water_history
+     * const water_history = await prisma.water_history.upsert({
+     *   create: {
+     *     // ... data to create a Water_history
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Water_history we want to update
+     *   }
+     * })
+     */
+    upsert<T extends water_historyUpsertArgs>(args: SelectSubset<T, water_historyUpsertArgs<ExtArgs>>): Prisma__water_historyClient<$Result.GetResult<Prisma.$water_historyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Water_histories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {water_historyCountArgs} args - Arguments to filter Water_histories to count.
+     * @example
+     * // Count the number of Water_histories
+     * const count = await prisma.water_history.count({
+     *   where: {
+     *     // ... the filter for the Water_histories we want to count
+     *   }
+     * })
+    **/
+    count<T extends water_historyCountArgs>(
+      args?: Subset<T, water_historyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Water_historyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Water_history.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Water_historyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Water_historyAggregateArgs>(args: Subset<T, Water_historyAggregateArgs>): Prisma.PrismaPromise<GetWater_historyAggregateType<T>>
+
+    /**
+     * Group by Water_history.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {water_historyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends water_historyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: water_historyGroupByArgs['orderBy'] }
+        : { orderBy?: water_historyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, water_historyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWater_historyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the water_history model
+   */
+  readonly fields: water_historyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for water_history.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__water_historyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the water_history model
+   */
+  interface water_historyFieldRefs {
+    readonly id: FieldRef<"water_history", 'Int'>
+    readonly timestamp: FieldRef<"water_history", 'DateTime'>
+    readonly water_level: FieldRef<"water_history", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * water_history findUnique
+   */
+  export type water_historyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * Filter, which water_history to fetch.
+     */
+    where: water_historyWhereUniqueInput
+  }
+
+  /**
+   * water_history findUniqueOrThrow
+   */
+  export type water_historyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * Filter, which water_history to fetch.
+     */
+    where: water_historyWhereUniqueInput
+  }
+
+  /**
+   * water_history findFirst
+   */
+  export type water_historyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * Filter, which water_history to fetch.
+     */
+    where?: water_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of water_histories to fetch.
+     */
+    orderBy?: water_historyOrderByWithRelationInput | water_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for water_histories.
+     */
+    cursor?: water_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` water_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` water_histories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of water_histories.
+     */
+    distinct?: Water_historyScalarFieldEnum | Water_historyScalarFieldEnum[]
+  }
+
+  /**
+   * water_history findFirstOrThrow
+   */
+  export type water_historyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * Filter, which water_history to fetch.
+     */
+    where?: water_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of water_histories to fetch.
+     */
+    orderBy?: water_historyOrderByWithRelationInput | water_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for water_histories.
+     */
+    cursor?: water_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` water_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` water_histories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of water_histories.
+     */
+    distinct?: Water_historyScalarFieldEnum | Water_historyScalarFieldEnum[]
+  }
+
+  /**
+   * water_history findMany
+   */
+  export type water_historyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * Filter, which water_histories to fetch.
+     */
+    where?: water_historyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of water_histories to fetch.
+     */
+    orderBy?: water_historyOrderByWithRelationInput | water_historyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing water_histories.
+     */
+    cursor?: water_historyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` water_histories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` water_histories.
+     */
+    skip?: number
+    distinct?: Water_historyScalarFieldEnum | Water_historyScalarFieldEnum[]
+  }
+
+  /**
+   * water_history create
+   */
+  export type water_historyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * The data needed to create a water_history.
+     */
+    data?: XOR<water_historyCreateInput, water_historyUncheckedCreateInput>
+  }
+
+  /**
+   * water_history createMany
+   */
+  export type water_historyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many water_histories.
+     */
+    data: water_historyCreateManyInput | water_historyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * water_history update
+   */
+  export type water_historyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * The data needed to update a water_history.
+     */
+    data: XOR<water_historyUpdateInput, water_historyUncheckedUpdateInput>
+    /**
+     * Choose, which water_history to update.
+     */
+    where: water_historyWhereUniqueInput
+  }
+
+  /**
+   * water_history updateMany
+   */
+  export type water_historyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update water_histories.
+     */
+    data: XOR<water_historyUpdateManyMutationInput, water_historyUncheckedUpdateManyInput>
+    /**
+     * Filter which water_histories to update
+     */
+    where?: water_historyWhereInput
+    /**
+     * Limit how many water_histories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * water_history upsert
+   */
+  export type water_historyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * The filter to search for the water_history to update in case it exists.
+     */
+    where: water_historyWhereUniqueInput
+    /**
+     * In case the water_history found by the `where` argument doesn't exist, create a new water_history with this data.
+     */
+    create: XOR<water_historyCreateInput, water_historyUncheckedCreateInput>
+    /**
+     * In case the water_history was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<water_historyUpdateInput, water_historyUncheckedUpdateInput>
+  }
+
+  /**
+   * water_history delete
+   */
+  export type water_historyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+    /**
+     * Filter which water_history to delete.
+     */
+    where: water_historyWhereUniqueInput
+  }
+
+  /**
+   * water_history deleteMany
+   */
+  export type water_historyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which water_histories to delete
+     */
+    where?: water_historyWhereInput
+    /**
+     * Limit how many water_histories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * water_history without action
+   */
+  export type water_historyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the water_history
+     */
+    select?: water_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the water_history
+     */
+    omit?: water_historyOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model user
    */
 
@@ -3768,6 +4749,15 @@ export namespace Prisma {
   export type HistoryScalarFieldEnum = (typeof HistoryScalarFieldEnum)[keyof typeof HistoryScalarFieldEnum]
 
 
+  export const Water_historyScalarFieldEnum: {
+    id: 'id',
+    timestamp: 'timestamp',
+    water_level: 'water_level'
+  };
+
+  export type Water_historyScalarFieldEnum = (typeof Water_historyScalarFieldEnum)[keyof typeof Water_historyScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     username: 'username',
@@ -3931,6 +4921,50 @@ export namespace Prisma {
     fire?: BoolWithAggregatesFilter<"history"> | boolean
   }
 
+  export type water_historyWhereInput = {
+    AND?: water_historyWhereInput | water_historyWhereInput[]
+    OR?: water_historyWhereInput[]
+    NOT?: water_historyWhereInput | water_historyWhereInput[]
+    id?: IntFilter<"water_history"> | number
+    timestamp?: DateTimeFilter<"water_history"> | Date | string
+    water_level?: IntFilter<"water_history"> | number
+  }
+
+  export type water_historyOrderByWithRelationInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    water_level?: SortOrder
+  }
+
+  export type water_historyWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: water_historyWhereInput | water_historyWhereInput[]
+    OR?: water_historyWhereInput[]
+    NOT?: water_historyWhereInput | water_historyWhereInput[]
+    timestamp?: DateTimeFilter<"water_history"> | Date | string
+    water_level?: IntFilter<"water_history"> | number
+  }, "id">
+
+  export type water_historyOrderByWithAggregationInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    water_level?: SortOrder
+    _count?: water_historyCountOrderByAggregateInput
+    _avg?: water_historyAvgOrderByAggregateInput
+    _max?: water_historyMaxOrderByAggregateInput
+    _min?: water_historyMinOrderByAggregateInput
+    _sum?: water_historySumOrderByAggregateInput
+  }
+
+  export type water_historyScalarWhereWithAggregatesInput = {
+    AND?: water_historyScalarWhereWithAggregatesInput | water_historyScalarWhereWithAggregatesInput[]
+    OR?: water_historyScalarWhereWithAggregatesInput[]
+    NOT?: water_historyScalarWhereWithAggregatesInput | water_historyScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"water_history"> | number
+    timestamp?: DateTimeWithAggregatesFilter<"water_history"> | Date | string
+    water_level?: IntWithAggregatesFilter<"water_history"> | number
+  }
+
   export type userWhereInput = {
     AND?: userWhereInput | userWhereInput[]
     OR?: userWhereInput[]
@@ -4067,6 +5101,45 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     fire?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type water_historyCreateInput = {
+    timestamp?: Date | string
+    water_level?: number
+  }
+
+  export type water_historyUncheckedCreateInput = {
+    id?: number
+    timestamp?: Date | string
+    water_level?: number
+  }
+
+  export type water_historyUpdateInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    water_level?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type water_historyUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    water_level?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type water_historyCreateManyInput = {
+    id?: number
+    timestamp?: Date | string
+    water_level?: number
+  }
+
+  export type water_historyUpdateManyMutationInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    water_level?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type water_historyUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    water_level?: IntFieldUpdateOperationsInput | number
   }
 
   export type userCreateInput = {
@@ -4235,6 +5308,34 @@ export namespace Prisma {
 
   export type historySumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type water_historyCountOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    water_level?: SortOrder
+  }
+
+  export type water_historyAvgOrderByAggregateInput = {
+    id?: SortOrder
+    water_level?: SortOrder
+  }
+
+  export type water_historyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    water_level?: SortOrder
+  }
+
+  export type water_historyMinOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    water_level?: SortOrder
+  }
+
+  export type water_historySumOrderByAggregateInput = {
+    id?: SortOrder
+    water_level?: SortOrder
   }
 
   export type StringFilter<$PrismaModel = never> = {

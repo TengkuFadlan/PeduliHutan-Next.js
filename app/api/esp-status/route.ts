@@ -26,6 +26,14 @@ export async function POST(request: Request) {
           },
         });
       }
+      if (existingEspStatus.water_level !== water_level) {
+        await prisma.water_history.create({
+          data: {
+            water_level,
+            timestamp: new Date(),
+          },
+        });
+      }
       const updatedEspStatus = await prisma.esp_status.update({
         where: { id: 1 },
         data: {

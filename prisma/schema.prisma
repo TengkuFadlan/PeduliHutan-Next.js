@@ -9,10 +9,10 @@ datasource db {
 }
 
 model esp_status {
-  id           Int      @id @default(1)
-  water_level  Int
-  last_taken   DateTime @db.DateTime()
-  fire         Boolean  @default(false)
+  id          Int      @id @default(1)
+  water_level Int
+  last_taken  DateTime @db.DateTime()
+  fire        Boolean  @default(false)
 }
 
 model history {
@@ -21,9 +21,15 @@ model history {
   fire      Boolean  @default(false)
 }
 
+model water_history {
+  id          Int      @id @default(autoincrement())
+  timestamp   DateTime @default(now())
+  water_level Int  @default(0)
+}
+
 model user {
-  id        Int       @id @default(autoincrement())
-  username  String
-  email     String    @unique
-  password  String
+  id       Int    @id @default(autoincrement())
+  username String
+  email    String @unique
+  password String
 }

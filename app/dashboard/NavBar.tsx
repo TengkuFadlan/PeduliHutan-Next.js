@@ -12,7 +12,6 @@ const NavBar = () => {
 
   const tabs = [
     { href: '/dashboard/status', label: 'Status' },
-    { href: '/dashboard/history', label: 'Riwayat' },
   ];
 
   const handleLogout = async () => {

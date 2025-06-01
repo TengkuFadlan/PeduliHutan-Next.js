@@ -133,6 +133,12 @@ exports.Prisma.HistoryScalarFieldEnum = {
   fire: 'fire'
 };
 
+exports.Prisma.Water_historyScalarFieldEnum = {
+  id: 'id',
+  timestamp: 'timestamp',
+  water_level: 'water_level'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   username: 'username',
@@ -155,6 +161,7 @@ exports.Prisma.userOrderByRelevanceFieldEnum = {
 exports.Prisma.ModelName = {
   esp_status: 'esp_status',
   history: 'history',
+  water_history: 'water_history',
   user: 'user'
 };
 
