@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import { Box, Flex, Heading, Progress, Table } from '@radix-ui/themes';
 import { prisma } from "@/lib/prisma";
 import React from 'react';
+import WaterGraph from './WaterGraph';
 
 const WaterPage = async () => {
   // Fetch the latest water level data from the database
@@ -61,34 +62,14 @@ const WaterPage = async () => {
 
             <div>
               <Heading>Riwayat Status Air</Heading>
-              <Table.Root>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.ColumnHeaderCell>Tanggal</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>Persentase Air</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>Level Air</Table.ColumnHeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {waterHistory.length === 0 ? (
-                    <Table.Row>
-                      <Table.Cell colSpan={3}>Tidak ada riwayat</Table.Cell>
-                    </Table.Row>
-                  ) : (
-                    waterHistory.map((entry: any) => (
-                      <Table.Row key={entry.id}>
-                        <Table.RowHeaderCell>
-                          {new Date(entry.timestamp).toLocaleString('id-ID')}
-                        </Table.RowHeaderCell>
-                        <Table.Cell>{entry.water_level}%</Table.Cell>
-                        <Table.Cell>
-                          <Progress color="cyan" value={entry.water_level} size="3" />
-                        </Table.Cell>
-                      </Table.Row>
-                    ))
-                  )}
-                </Table.Body>
-              </Table.Root>
+              <Box mt="3">
+                <WaterGraph
+                  data={waterHistory.map((entry: any) => ({
+                    timestamp: entry.timestamp,
+                    water_level: entry.water_level,
+                  }))}
+                />
+              </Box>
             </div>
           </Flex>
         </Box>
